@@ -2,10 +2,14 @@
 <html>
   <head>
     <title>Forum</title>
+    <div id="header">
+     <%= render partial: 'partials/header' %>
+     <div>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </div>
   </head>
 
   <body>
