@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Forum</title>
-    <div id="header">
-     <%= render partial: 'partials/header' %>
-     <div>
-    <%= csrf_meta_tags %>
+      <title>Forum</title>
 
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </div>
   </head>
-
   <body>
-    <%= yield %>
+    <div id="header">
+
+     <%= render partial: 'partials/header' %>
+     <div>
+       <%= yield %>
+
+       <div class="landing">
+   // Your landing page html in here
+ </div>
+
   </body>
 </html>
