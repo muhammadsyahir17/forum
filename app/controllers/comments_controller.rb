@@ -16,8 +16,10 @@ class CommentsController < ApplicationController
       @comment = Comment.new(post_params.merge(post_id: params[:post_id]))
 
       if @comment.save
+        flash[:success] = "You've created a new topic."
         redirect_to post_posts_path(@post)
       else
+          flash[:danger] = @topic.errors.full_messages
         redirect_to new_post_post_path(@post)
       end
     end

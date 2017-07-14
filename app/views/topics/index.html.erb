@@ -1,9 +1,37 @@
-<h1>Topics</h1>
 
-  <% @topics.each do |topic| %>
-    <div class="topic">
+ <div class="container">
+   <div class="row">
+     <div class="col-lg-12 text-center">
+       <h1>Topics To Discuss</h1>
+     </div>
+    </div>
+  </div>
+</div>
+
+     <div class="row">
+       <div class="col-lg-4 col-lg-offset-2">
+ <p> <% @topics.each do |topic| %> </p>
+      <div class="topic">
+        <div class="row">
+        <div class="col-lg-4">
+        <p>
+    </div>
+    <div>
       <h3><%= topic.title %></h3>
+      <div>
       <h5><%= topic.description %></h5>
       <%= link_to topic.title, topic_posts_path(topic) %>
+    </p>
+  </div>
+  <div class="row">
+  <div class="col-lg-4 col-lg-offset-2">
+  <%= link_to topic.title, topic_posts_path(topic) %>
+  
+  </div>
+  </div>
+
+     </div>
     </div>
+   </div>
+
   <% end %>
