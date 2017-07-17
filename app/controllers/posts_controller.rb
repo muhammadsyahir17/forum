@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
    def index
      @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
-     @posts = @topic.posts.order("created_at DESC")
+     @posts = Post.all
    end
 
    def new
@@ -15,11 +15,14 @@ class PostsController < ApplicationController
      @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
 
      if @post.save
-      flash[:success] = "You've created a new topic."
+
+      flash[:success] = "You've created a new post."
+       redirect_to action: :show, id: @post.id
        redirect_to topic_posts_path(@topic)
      else
         flash[:danger] = @topic.errors.full_messages
        redirect_to new_topic_post_path(@topic)
+       render 'new'
      end
    end
 
@@ -47,7 +50,9 @@ class PostsController < ApplicationController
        redirect_to topic_posts_path(@topic)
      end
    end
-
+   def show
+      @post = Post.find_by_id(params[:id].to_i)
+    end
    private
 
    def post_params

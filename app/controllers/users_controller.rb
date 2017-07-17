@@ -1,43 +1,47 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
+
+  def new
+    @user = User.new
+  end
+
+  def create
+@user = User.new(params[:user])
+if @user.save
+  session[:user_id] = @user.id
+  redirect_to root_url, :notice => "Thank you for Signed up!"
+else
+  render "new"
+end
+  end
+
+  def edit
+
+  end
+
+  # PATCH/PUT /users/1
+  # PATCH/PUT /users/1.json
+  def update
+respond_to do |format|
+  if @recipe.update(user_params)
+    format.html { redirect_to @user, notice: 'User was successfully updated.' }
+    format.json { render :show, status: :ok, location: @user }
+  else
+    format.html { render :edit }
+    format.json { render json: @user.errors, status: :unprocessable_entity }
+  end
+end
+  end
 
 
-     def new
-       @topic = Topic.find_by(id: params[:topic_id])
-       @post = Post.new
-     end
+  private
+# Use callbacks to share common setup or constraints between actions.
+def set_user
+  @user = User.find(params[:id])
+end
 
-     def create
-       @topic = Topic.find_by(id: params[:topic_id])
-       @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
+# Never trust parameters from the scary internet, only allow the white list through.
+def user_params
+  params.require(:recipe).permit(:id, :name, :email, :password, :password_confirmation, :avatar)
 
-       if @post.save
-        flash[:success] = "You've created a new topic."
-         redirect_to topic_posts_path(@topic)
-       else
-          flash[:danger] = @topic.errors.full_messages
-         redirect_to new_topic_post_path(@topic)
-       end
-     end
-
-     def edit
-       @post = Post.find_by(id: params[:id])
-       @topic = @post.topic
-     end
-
-     def update
-       @topic = Topic.find_by(id: params[:topic_id])
-       @post = Post.find_by(id: params[:id])
-
-       if @post.update(post_params)
-         redirect_to topic_posts_path(@topic)
-       else
-         redirect_to edit_topic_post_path(@topic, @post)
-       end
-     end
-
-     private
-
-     def user_params
-       params.require(:post).permit(:title, :body)
-     end
-   end
+end
+end
