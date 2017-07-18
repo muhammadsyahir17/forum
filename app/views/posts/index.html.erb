@@ -10,22 +10,19 @@
 
      <div class="row">
        <div class="col-lg-4 col-lg-offset-2">
- <p> <% @posts.each do |post| %>
-
-   </p>
+ <p> <% @posts.each do |post| %>   </p>
       <div class="post">
         <div class="row">
         <div class="col-lg-4">
-        <p>
+
     </div>
     <div>
       <h3><%= post.title %></h3>
       <div>
       <h5><%= post.body %></h5>
   <%= link_to post.title, topic_posts_path(post) %>
-    </p>
+    
   </div>
-
      </div>
     </div>
    </div>

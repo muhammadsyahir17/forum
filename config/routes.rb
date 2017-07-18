@@ -9,8 +9,8 @@ Rails.application.routes.draw do
        end
      end
   end
-  resources :users, only: [:new, :edit, :create, :update] do
-     resources :session, only: [:new, :create, :destroy]
-   end
+  resources :users, only: [:new, :edit, :create, :update]
+   resources :sessions, only: [:new, :create, :destroy]
 end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

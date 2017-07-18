@@ -1,0 +1,32 @@
+
+ <div class="container">
+   <div class="row">
+     <div class="col-lg-12 text-center">
+       <h1>List Of Comment</h1>
+     </div>
+    </div>
+  </div>
+</div>
+
+     <div class="row">
+       <div class="col-lg-4 col-lg-offset-2">
+ <p> <% @comments.each do |comment| %>
+
+   </p>
+      <div class="comment">
+        <div class="row">
+        <div class="col-lg-4">
+        <p>
+    </div>
+    <div>
+      <h3><%= comment.body %></h3>
+      <%= link_to comment.body, new_topic_post_comment_path(comment) %>
+
+    </p>
+  </div>
+
+     </div>
+    </div>
+   </div>
+
+  <% end %>

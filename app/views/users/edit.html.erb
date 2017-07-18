@@ -1,0 +1,37 @@
+
+      <%= form_for(@user, url: edit_user_path, html: { id: "user-edit-form" }) do |f| %>
+
+      <h1 class="text-center">  Register</h1> </legend>
+
+    <div class="form-group">
+      <h4> <%= f.label :username_field, "Username" %> </h4>
+      <%= f.text_field :username, id: "username_field", class: 'form-control' %>
+      <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+    </div>
+
+    <div class="form-group">
+       <h4> <%= f.label :email_field, "Email" %> </h4>
+       <%= f.text_field :email, required: true, id: "email_field", class: 'form-control' %>
+       <p class="help-block">Please provide your E-mail</p>
+
+    </div>
+
+    <div class="form-group">
+      <h4> <%= f.label :password_field, "Password" %> </h4>
+      <%= f.password_field :password, id: "password_field", class: 'form-control' %>
+      <p class="help-block">Password should be at least 4 characters</p>
+    </div>
+
+    <div class="form-group">
+      <h4> <%= f.label :password_confirm_field, "Password (Confirm)" %> </h4>
+      <%= f.password_field :password_confirm, id: "password_confirm_field", class: 'form-control' %>
+      <p class="help-block">Please confirm password</p>
+    </div>
+
+    <div class="form-group text-center">
+      <%= f.submit "Register", class: "btn btn-success btn-lg" %>
+    </div>
+    <% end %>
+    </div>
+   </div>
+</div>

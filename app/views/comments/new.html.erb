@@ -1,0 +1,14 @@
+<%= form_for(@comments, url: topic_post_comments_path, html: { id: "comments-create-form" }) do |f| %>
+    <h1 class="text-center">
+      Create Comment
+    </h1>
+
+    <div class="form-group">
+      <h4> <%= f.label :title_field, "Body" %> </h4>
+      <%= f.text_field :body, required: true, id: "comment_title_field", class: 'form-control' %>
+    </div>
+
+    <div class="form-group text-center">
+      <%= f.submit "Create comment", class: "btn btn-success btn-lg" %>
+    </div>
+  <% end %>

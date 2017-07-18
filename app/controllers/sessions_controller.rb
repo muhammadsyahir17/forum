@@ -1,13 +1,11 @@
 class SessionsController < ApplicationController
- before_action :require_none, only: [:new]
+
   def new
   end
 
   def create
     user = User.find_by(email: user_params[:email])
-               &.authenticate(user_params[:password])
-
-    if user
+    if user.authenticate(user_params[:password])
       session[:id] = user.id
       flash[:success] = "Welcome back #{current_user.username}"
       redirect_to root_path
