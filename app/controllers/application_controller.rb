@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
+  def authenticate!
+      unless current_user
+        redirect_to root_path
+        flash[:danger] = "You need to login first"
+      end
+    end
+
     def current_user
       return unless session[:id]
       @current_user ||= User.find_by(id: session[:id])

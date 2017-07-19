@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-@user = User.new(params[:user])
-if @user.save
-  session[:user_id] = @user.id
-  redirect_to root_url, :notice => "Thank you for Signed up!"
-else
-  render "new"
-end
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_url, :notice => "Thank you for Signed up!"
+    else
+      render "new"
+    end
   end
 
   def edit
@@ -45,7 +45,7 @@ end
 
 # Never trust parameters from the scary internet, only allow the white list through.
 def user_params
-  params.require(:recipe).permit(:id, :name, :email, :password, :password_confirmation, :avatar)
+  params.require(:user).permit(:id, :name, :email, :password, :password_confirmation, :avatar)
 
 end
 end
