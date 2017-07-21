@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Forum</title>
-
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,9 +13,7 @@
     <div id="header">
       <%= render partial: 'partials/header' %>
     </div>
-
     <%= render partial: "partials/flash_messages" %>
-    
-    <%= yield %>
+    <%=yield %>
   </body>
 </html>

@@ -12,13 +12,14 @@ class PostsController < ApplicationController
    end
 
    def create
+
      @topic = Topic.find_by(id: params[:topic_id])
      @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
 
      if @post.save
 
       flash[:success] = "You've created a new post."
-       redirect_to action: :show, id: @post.id
+      
        redirect_to topic_posts_path(@topic)
      else
         flash[:danger] = @topic.errors.full_messages

@@ -12,9 +12,10 @@ class PasswordResetsController < ApplicationController
          flash[:success] = "We've sent you instructions on how to reset your password"
        else
          flash[:danger] = "User does not exist"
-       end
 
+       end
        redirect_to new_password_reset_path
+
      end
 
      def edit
@@ -30,7 +31,7 @@ class PasswordResetsController < ApplicationController
          redirect_to root_path
        else
          flash[:danger] = "Error, token is invalid or has expired"
-         redirect_to edit_password_reset_path(id: params[:id])
+         redirect_to password_reset_path(id: params[:id])
        end
      end
 

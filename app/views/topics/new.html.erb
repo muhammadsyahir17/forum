@@ -1,19 +1,32 @@
-<%= form_for(@topic, url: new_topic_path, html: { id: "topic-create-form" }) do |f| %>
-    <h1 class="text-center">
-      Create Topic
-    </h1>
-
-    <div class="form-group">
+<%= form_for(@topic, url: topics_path, html: { id: "topic-create-form" }) do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-left">
+      <h2>Create Topic</h2>
+    </div>
+   </div>
+ </div>
+ <div class="row">
+        <div class="col-lg-4 col-lg-offset-2">
+<div class="form-group">
       <h4> <%= f.label :title_field, "Title" %> </h4>
       <%= f.text_field :title, required: true, id: "topic_title_field", class: 'form-control' %>
     </div>
-
+      </div>
+            </div>
+      <div class="row">
+              <div class="col-lg-4 col-lg-offset-2">
     <div class="form-group">
-      <h4> <%= f.label :text_field, "Description" %> </h4>
-      <%= f.text_field :description, id: "topic_description_field", class: 'form-control' %>
-    </div>
 
-    <div class="form-group text-center">
+      <h4> <%= f.label :text_field, "Description" %> </h4>
+      <%= f.text_field :description,required: true, id: "topic_description_field", class: 'form-control' %>
+    </div>
+    </div>
+          </div>
+
+  </div>
+
+    <div class="col-lg-4 col-lg-offset-2 text-center">
       <%= f.submit "Create Topic", class: "btn btn-success btn-lg" %>
     </div>
   <% end %>
