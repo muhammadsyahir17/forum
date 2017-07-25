@@ -1,4 +1,4 @@
-<%= form_for(@topic, url: edit_topic_path(@topic,@post), html: { id: "topic-update-form" }) do |f| %>
+<%= form_for(@topic, url: topic_path(@topic), html: { id: "topic-update-form" }) do |f| %>
     <h1 class="text-center">
       Create Topic
     </h1>
@@ -17,17 +17,5 @@
       <%= f.submit "Update Topic", class: "btn btn-success btn-lg" %>
     </div>
 
-    <div class="form-group">
-        <h4 class="text-center"> Post Image </h4>
-        <div id="preview-image">
-          <% if @post.image? %>
-            <%= image_tag @post.image, class: "img-settings img-responsive center-block" %>
-          <% end %>
-        </div>
-      </div>
-
-    <div class="form-group">
-      <%= f.file_field :image, id: "post_image_field", class: 'form-control image-uploader' %>
-    </div>
 
   <% end %>

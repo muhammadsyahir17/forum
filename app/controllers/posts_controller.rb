@@ -3,7 +3,7 @@ class PostsController < ApplicationController
    def index
      @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
      @posts = @topic.posts.order("created_at DESC")
-     @posts = Post.all
+
    end
 
    def new
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
      if @post.save
 
       flash[:success] = "You've created a new post."
-      
+
        redirect_to topic_posts_path(@topic)
      else
         flash[:danger] = @topic.errors.full_messages
@@ -38,7 +38,8 @@ class PostsController < ApplicationController
      @post = Post.find_by(id: params[:id])
 
      if @post.update(post_params)
-       redirect_to topic_posts_path(@topic)
+       flash[:success] = "Post updated successfully."
+       redirect_to topic_posts_path(@post.topic)
      else
        redirect_to edit_topic_post_path(@topic, @post)
      end

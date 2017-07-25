@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
 
     def index
       @post = Post.includes(:comments).find_by(id: params[:post_id])
-      @comments = Comment.all
+      @comments = @post.comments.order("created_at DESC")
+
     end
 
     def new
@@ -34,8 +35,9 @@ class CommentsController < ApplicationController
       @post = Post.find_by(id: params[:post_id])
       @comment = Comment.find_by(id: params[:id])
 
-      if @comment.update(post_params)
-        redirect_to topic_post_comment_path(@post)
+      if @comment.update(comment_params)
+        flash[:success] = "Comment updated successfully."
+        redirect_to topic_post_comments_path(@comment.post)
       else
         redirect_to edit_topic_post_comment_path(@topic,@post, @comment)
       end
@@ -43,13 +45,15 @@ class CommentsController < ApplicationController
 
     def destroy
       @comment = Comment.find_by(id: params[:id])
-      @post = @comment.topic
+      @post = @comment.post
 
       if @comment.destroy
-        redirect_to topic_post_comment_path(@post)
+        redirect_to topic_post_comments_path
       end
     end
-
+    def show
+          @comment = Comment.find_by_id(params[:id].to_i)
+        end
     private
 
     def comment_params

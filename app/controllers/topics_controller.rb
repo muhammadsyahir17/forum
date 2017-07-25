@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
 
    def new
     @topic = Topic.new
+    authorize
 
    end
 
@@ -31,9 +32,11 @@ class TopicsController < ApplicationController
      @topic = Topic.find_by(id: params[:id])
 
      if @topic.update(topic_params)
-       redirect_to topic_path(@topic)
-     else
-       redirect_to edit_topic_path(@topic)
+         flash[:success] = "Topic updated successfully."
+             redirect_to topics_path
+       else
+      render('edit')
+
     end
    end
 

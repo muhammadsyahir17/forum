@@ -30,16 +30,12 @@
 
 
 <div class="col-lg-4 col-lg-offset-2 text-center">
+<%= link_to "Not a Member Yet?",new_user_path %>
 <%= f.submit "Login", class: "btn btn-success btn-lg" %>
+
+<%= link_to "Forgot your Password",new_password_reset_path %>
 </div>
 
-<div>
-  <li>
 
-       <%= link_to "Lost Password",new_password_reset_path %></li>
-
-
-</li>
-</div>
 
 <%end%>

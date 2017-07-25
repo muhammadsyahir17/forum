@@ -24,14 +24,14 @@ class PasswordResetsController < ApplicationController
 
      def update
        @user = User.find_by(password_reset_token: params[:id])
-
+       
        if @user && token_active?
          @user.update(password: user_params[:password], password_reset_token: nil, password_reset_at: nil)
          flash[:success] = "Password updated, you may log in now"
          redirect_to root_path
        else
          flash[:danger] = "Error, token is invalid or has expired"
-         redirect_to password_reset_path(id: params[:id])
+         redirect_to edit_password_reset_path(id: params[:id])
        end
      end
 

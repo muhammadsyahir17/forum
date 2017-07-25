@@ -9,7 +9,7 @@ resources :password_resets, only:[:new, :create, :edit, :update]
 
        end
      end
-   
+
   resources :users, only: [:new, :edit, :create, :update]
   resources :sessions, only: [:new, :create, :destroy]
 
