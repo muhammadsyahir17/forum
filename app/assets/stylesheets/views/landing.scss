@@ -13,7 +13,8 @@
   justify-content: center;
 }
 .background-2{
-  background-color: #18BC9C;
+  background-image: asset-url("FRAME.png");
+  //background-color: #18BC9C;
   height: 70vh;
   width: 100%;
   background-position: 50% 50%;
@@ -25,6 +26,7 @@
   justify-content: center;
 }
 .background-3{
+
   background-color: #a2eafa;
   height: 30vh;
   width: 100%;
