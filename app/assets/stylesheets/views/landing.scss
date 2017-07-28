@@ -94,3 +94,9 @@
         opacity: 0;
         transition: opacity 5s ease-in-out;
       }
+      .footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+    }

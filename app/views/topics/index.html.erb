@@ -7,39 +7,28 @@
     </div>
    </div>
 </div>
-<div class="row">
-  <div class="col-lg-4 col-lg-offset-2">
-    <h5> Press link "CREATE TOPIC" to create the topic
-     
-     <%= link_to "Create Topic",new_topic_path %>
-    </h5>
-  </div>
-</div>
-</div>
+<div class="background-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-2">
 
-     <div class="row">
-       <div class="col-lg-4 col-lg-offset-2">
-         <h5>***** List of  topic **** </h5>
- <p> <% @topics.each do |topic| %> </p>
- <%= link_to topic.title, topic_posts_path(topic) %>
-      <div class="topic">
-        <div class="row">
-        <div class="col-lg-4">
-        <p>
-    </div>
-    <div>
-      <div>
-      <h5><%= topic.description %></h5>
-      <h5>***** Things to Post **** </h5>
-<%topic.posts.each do |post| %>
+        <h4 class="font-word"> Press link "CREATE TOPIC" to create the topic
+          <%= link_to "Create Topic",new_topic_path %>
+        </h4>
+        <h4 class="font-word">***** List of  topic **** </h4>
+         <p> <% @topics.each do |topic| %> </p>
+         <%= link_to topic.title, topic_posts_path(topic) %>
 
-  <h5><%= post.body %></h5>
-<h5>***** Things to Comment **** </h5>
-<%post.comments.each do |comment| %>
+              <div class="topic">
+              <h4 class="font-word"><%= topic.description %></h4>
+              <h4 class="font-word">***** Things to Post **** </h4>
 
+                  <%topic.posts.each do |post| %>
 
-
-<p> <%= comment.body %></p>
+      <h4 class="font-word"><%= post.body %></h4>
+      <h4 class="font-word">***** Things to Comment **** </h4>
+          <%post.comments.each do |comment| %>
+            <p> <%= comment.body %></p>
 
 
 <%end%>
@@ -48,14 +37,12 @@
       <p><%= link_to "Delete Topic", topic_path(topic), method: :delete, data: {confirm: "Are you sure you want to delete?"} %></p>
       <p><%= link_to "Edit Topic", edit_topic_path(topic)%></p>
 
-
-
-
-  </div>
-
-
-     </div>
-    </div>
-   </div>
-
   <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
